@@ -1,0 +1,8 @@
+<launch>
+	<include file="$(find husky_base)/launch/base.launch">
+		<arg name="port" value="/dev/ttyUSB0"/>	
+	</include>
+<!--	<env name="ROS_ROOT" value="/opt/ros/fuerte/share/ros" />
+	<env name="ROS_PACKAGE_PATH" value="/home/rrc/fuerte_workspace/sandbox:/opt/ros/fuerte/stacks:/opt/ros/fuerte/share:/opt/ros/fuerte/share/ros" />
+	<include file="$(find fuerte_workspace)/sandbox/launch_files/stereo_launch.launch"/>-->
+</launch>

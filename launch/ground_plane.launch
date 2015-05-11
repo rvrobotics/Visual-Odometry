@@ -1,0 +1,24 @@
+<launch>
+	<!-- Arguments -->
+	<arg name="camera" default="/kitti_stereo" /> <!-- The namespace where images are published -->
+
+	<!-- Run the rosbag -->
+	<node pkg="rosbag" type="play" name="rosbag" args="/home/rrc/catkin_ws/src/viso2-hydro/data/kitti_06.bag -l"/> 
+		 <node pkg="tushar_stereo" name="tushar_stereo" type="publish_point_cloud" /> 
+
+	<!-- Run the ROS package stereo_image_proc -->
+	<group ns="$(arg camera)" >
+		<node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc">
+			<remap from="/kitti_stereo/left/image_raw" to="/kitti_stereo/left/image_rect"/>
+			<remap from="/kitti_stereo/right/image_raw" to="/kitti_stereo/right/image_rect"/>
+		</node>
+	</group>
+	<node pkg="tushar_stereo" name="tushar_stereo1" type="normal_to_features" /> 
+
+	<!-- Run the viso2_ros package -->
+	<!-- <node pkg="viso2_ros" type="stereo_odometer" name="stereo_odometer" output="screen">
+		<remap from="stereo" to="$(arg camera)"/>
+		<remap from="image" to="image_rect"/>
+	</node> -->
+
+</launch>

@@ -1,0 +1,20 @@
+import rospy
+from nav_msgs.msg import Odometry
+from tf.transformations import euler_from_quaternion
+from geometry_msgs.msg import Twist,Pose,PoseStamped
+import tf
+
+pose = Pose()
+
+receivePosition(actualPose):
+	global pose
+	pose = actualPose
+
+if __name__ == 'main':
+	rospy.init_node('competitior')
+	rospy.Subscriber('/odom',Pose,receivePosition)
+	br = tf.TransformBroadcaster()
+	rate = rospy.rate(10.00)
+	while not rospy.is_shutdown():
+		br.sendTransform()
+
