@@ -16,7 +16,7 @@ x = []
 y = []
 z = []
 def print_position(a):
-	rospy.loginfo(a.pose.pose.position)
+	#rospy.loginfo(a.pose.pose.position)
 	#global pose
 	x.append(a.pose.pose.position.x)
 	y.append(a.pose.pose.position.y)
@@ -45,7 +45,7 @@ y_g = []
 z_g = []
 
 def plot_ground_truth():
-	f = open('/home/mahindra/tushar/06.txt','r')
+	f = open('/home/mahindra/tushar/dataset/poses/07.txt','r')
 	a=[]
 	for row in f :
 	    a.append([float(x) for x in row.split()])
@@ -71,10 +71,18 @@ if __name__ == '__main__':
 	#pl.plot(z , x, 'r',[-0.3075,1.8896,2.522,3.4,2.832,1.906,-.686] , [-0.0873,-0.5973,-0.36619,-1.3018,-2.098,-2.5384,-1.966] ,'g')
 	pl.xlabel('z coordinate')
 	pl.ylabel('x coordinate')
-	pl.text( 60, .025,'KITTI DATASET \n green-> ground truth , red-> visual odometry')
+	pl.text( 60, .025,'KITTI DATASET \n green-> search , red-> ground truth, blue->odometry')
 	#pl.show()
-        pl.plot(x_e, z_e,'-',x,z,'-',x_g,z_g,'-')
-	pl.show()
+        pl.plot(x_e, z_e,'g',x,z,'b',x_g,z_g,'r')
+	for i,j,k in zip(x_e,y_e,z_e):
+		print i,j,k,'0','0','0'
+	print '*****'
+	for i,j,k in zip(x,y,z):
+		print i,j,k,'0','0','0'
+	print '*****'
+	for i,j,k in zip(x_g,y_g,z_g):
+		print i,j,k,'0','0','0'
+	#pl.show()
 	#pl.plot(x,z)
 	#pl.show()
 	#pl.plot(x_g,y_g)
