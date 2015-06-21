@@ -1,6 +1,9 @@
 #!/usr/bin/env python  
 '''
-This code generates homography matrix using feature corrospondance using SIFT feature and knn tracking and compare it with homography matrices for R and T of Visual Odometry from viso2 algorithm .It also does correction in Visual Odometry and publish it on new topic.
+This code generates homography matrix using feature corrospondance 
+using SIFT feature and knn tracking and compare it with homography 
+matrices for R and T of Visual Odometry from viso2 algorithm .
+It also does correction in Visual Odometry and publish it on new topic.
 
 Author:Tushar Vaidya
 Contect:mail@tusharvaidya.info
