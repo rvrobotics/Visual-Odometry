@@ -6,7 +6,7 @@ matrices for R and T of Visual Odometry from viso2 algorithm .
 It also does correction in Visual Odometry and publish it on new topic.
 
 Author:Tushar Vaidya
-Contect:mail@tusharvaidya.info
+Contact:tushar5610@gmail.com
 '''
 import roslib
 import rospy
