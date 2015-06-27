@@ -21,6 +21,7 @@ from sensor_msgs.msg import PointCloud2, Image
 from message_filters import Subscriber , TimeSynchronizer
 import random
 from nav_msgs.msg import Odometry
+from find_obj import filter_matches,explore_match
 #from common import draw_str
 
 H_tracking = np.array([])
@@ -218,6 +219,7 @@ def SIFT_callback(l_image, r_image):
 	
 	p0 = np.float32([kp0[m.queryIdx].pt for m in good]).reshape(-1,1,2)
 	p1 = np.float32([kp1[m.trainIdx].pt for m in good]).reshape(-1,1,2)
+	explore_match('features',image_0,image_1,good)
 	#for a,b in zip(p_0,p_1):
 	#	x0,y0=a[0]
   	#	x1,y1=b[0]
